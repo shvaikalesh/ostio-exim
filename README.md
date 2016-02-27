@@ -1,10 +1,10 @@
 # Ostio + Exim = <3
 
-This is an [Exim](http://github.com/hellyeahllc/exim) implementation of the [Ostio front-end](https://github.com/paulmillr/ostio).
+This is an [React + Exim](http://github.com/hellyeahllc/exim) implementation of the [Ostio front-end](https://github.com/paulmillr/ostio).
 
 ---
 
-Your open-source talks place.
+>Your open-source talks place.
 
 Ostio ("open-source talks") is a forum for open-source projects and the
 best place for discussing project stuff with other users. It is tightly
