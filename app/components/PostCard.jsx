@@ -1,3 +1,4 @@
+import marked from 'marked';
 import React from 'react';
 import {Link} from 'react-router';
 import moment from 'moment';
