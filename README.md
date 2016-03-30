@@ -20,7 +20,7 @@ This is a [React](https://facebook.github.io/react/) + [Exim](http://github.com/
 [![](http://brunch.io/images/screenshots/ostio.png)](http://ost.io/@paulmillr)
 
 ## Stack
-The stack is cloned from [brunch with exim](https://github.com/hellyeah/brunch-with-exim) skeleton.
+The stack is cloned from [brunch with exim](https://github.com/hellyeahllc/brunch-with-exim) skeleton.
 Use brunch with exim if you want to build new application:
 
 `brunch new <project name> -s exim`
