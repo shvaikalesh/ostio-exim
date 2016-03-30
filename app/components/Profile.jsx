@@ -19,10 +19,10 @@ const Navigation = ({ user, repo, topic }) => {
   if (repo) {
     const repoPath = profilePath + '/' + repo;
 
-    repoLink = <Link className="navigation-link" to={repoPath} data-type="repo">{repo}</Link>
+    repoLink = <Link key={repoPath} className="navigation-link" to={repoPath} data-type="repo">{repo}</Link>
 
     if (topic) {
-      topicLink = <Link className="navigation-link" to={repoPath + "/topics/" + topic} data-type="topic">#{topic}</Link>
+      topicLink = <Link key={repoPath + "/topics/" + topic} className="navigation-link" to={repoPath + "/topics/" + topic} data-type="topic">#{topic}</Link>
     }
   }
 

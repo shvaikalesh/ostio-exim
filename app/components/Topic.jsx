@@ -41,19 +41,19 @@ export default React.createClass({
         const {login, repo} = this.props.params;
         const onDelete = () => postsStore.actions.deletePost(login, repo, topic.number, post.id).then(() => this.posted());
         const onEdit = body => postsStore.actions.updatePost(login, repo, topic.number, post.id, body).then(() => this.posted());
-        return <Animated><PostCard {...{showActions, onDelete, onEdit, post}} /></Animated>;
+        return <Animated key={post.id}><PostCard {...{showActions, onDelete, onEdit, post}} /></Animated>;
       });
     } else {
       tops = "No posts."
     }
-    return <div className="topic-posts-container">
+    return <div className="topic-posts-container" key={topic.id}>
       <h3>{topic.title}</h3>
 
       <div className="topic-posts">
         <div className="posts">
           {tops}
         </div>
-        {this.state.currentUser ? <NewPost user={currentUser} repo={this.props.params.repo} topic={this.props.params.topic} onDone={this.posted} /> : null}
+        {this.state.currentUser ? <NewPost user={currentUser} repo={this.props.params.repo} topic={this.props.params.topic} onDone={this.posted} ke/> : null}
       </div>
     </div>;
   }

@@ -11,14 +11,16 @@
     "start": "brunch watch --server"
   },
   "dependencies": {
+    "es6-promise": "~3.1.2",
+    "exim": "~0.9.5",
+    "highlight.js": "^9.2.0",
+    "marked": "^0.3.5",
+    "moment": "~2.0.0",
+    "normalize.css": "~3.0.0",
     "react": "~0.14.7",
     "react-dom": "~0.14.7",
     "react-router": "~2.0.0",
-    "exim": "~0.9.5",
-    "moment": "~2.0.0",
-    "normalize.css": "~3.0.0",
-    "whatwg-fetch": "~0.11.0",
-    "es6-promise": "~3.1.2"
+    "whatwg-fetch": "~0.11.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "~2.0.0",

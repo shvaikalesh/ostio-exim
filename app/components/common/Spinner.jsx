@@ -1,3 +1,4 @@
+import React from 'react';
 import Animated from 'components/common/Animated';
 
 export default () => {

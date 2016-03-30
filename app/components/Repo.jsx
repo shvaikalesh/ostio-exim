@@ -36,7 +36,7 @@ export default React.createClass({
     if (this.state.topicsLoading) {
       tops = <Spinner />;
     } else if (topics.length > 0) {
-      tops = topics.map(topic => <Animated><TopicCard topic={topic} /></Animated>);
+      tops = topics.map(topic => <Animated key={topic.id}><TopicCard topic={topic} /></Animated>);
     } else {
       tops = "No topics."
     }

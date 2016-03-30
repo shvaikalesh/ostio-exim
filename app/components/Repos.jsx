@@ -61,7 +61,7 @@ export default React.createClass({
     if (!repositories || this.state.reposLoading) {
       repos = <Spinner />;
     } else if (repositories.length > 0) {
-      repos = repositories.map(repo => <Animated><RepoCard user={user} repo={repo} /></Animated>);
+      repos = repositories.map(repo => <Animated key={repo.id}><RepoCard user={user} repo={repo} /></Animated>);
       repos = <ul className="user-repo-list">{repos}</ul>;
     } else {
       repos = "No repositories.";

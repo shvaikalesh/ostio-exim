@@ -1,3 +1,5 @@
+import marked from 'marked';
+import hljs from 'highlight.js';
 import React from 'react';
 import {Link} from 'react-router';
 import moment from 'moment';
