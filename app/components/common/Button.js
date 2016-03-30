@@ -1,3 +1,4 @@
+import React from 'react';
 import Spinner from 'components/common/Spinner';
 
 export default ({ loading, className, onClick, children}) => {
