@@ -35,25 +35,27 @@ export default React.createClass({
 
     if (!posts || this.state.postsLoading) {
       tops = <Spinner />;
-    } else if (posts.length > 0) {
+    } else if (posts.length) {
       tops = posts.map(post => {
-        const showActions = post.user.login === currentUser.login;
+        const showActions = currentUser && post.user.login === currentUser.login;
         const {login, repo} = this.props.params;
         const onDelete = () => postsStore.actions.deletePost(login, repo, topic.number, post.id).then(() => this.posted());
         const onEdit = body => postsStore.actions.updatePost(login, repo, topic.number, post.id, body).then(() => this.posted());
         return <Animated key={post.id}><PostCard {...{showActions, onDelete, onEdit, post}} /></Animated>;
       });
     } else {
-      tops = "No posts."
+      tops = 'No posts.';
     }
+
     return <div className="topic-posts-container" key={topic.id}>
       <h3>{topic.title}</h3>
 
       <div className="topic-posts">
-        <div className="posts">
-          {tops}
-        </div>
-        {this.state.currentUser ? <NewPost user={currentUser} repo={this.props.params.repo} topic={this.props.params.topic} onDone={this.posted} ke/> : null}
+        <div className="posts">{tops}</div>
+        { currentUser 
+          ? <NewPost user={currentUser} {...this.props.params} onDone={this.posted} />
+          : <p>You must be logged in to comment</p>
+        }
       </div>
     </div>;
   }

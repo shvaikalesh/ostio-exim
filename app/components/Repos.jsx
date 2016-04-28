@@ -6,26 +6,28 @@ import Animated from 'components/common/Animated';
 import usersStore from 'stores/users';
 import reposStore from 'stores/repos';
 
-const RepoCard = ({ user, repo }) => {
-  return <li className="user-repo">
+const RepoCard = ({ user, repo }) =>
+  <li className="user-repo">
     <Link to={"/@" + user.login + "/" + repo.name}>{repo.name}</Link>
-  </li>
-};
+  </li>;
 
-const OrgCard = ({ item }) => {
-  return <span className="user">
+const OrgCard = ({ item }) =>
+  <span className="user">
     <Link to={"/@" + item.login} title={item.login} className="user-organization organization">
       <Avatar url={item.avatar_url} />
     </Link>
   </span>;
-};
 
 const OrganizationsOwners = ({ user }) => {
-  const isOrg = user.type === 'Organization';
+  const isOrg = user.typeof === 'Organization';
   const orgItems = isOrg ? user.owners : user.organizations;
 
-  if (orgItems.length > 0) {
-    const userList = orgItems.map(item => <Animated inline={true}><OrgCard item={item} /></Animated>);
+  if (orgItems.length) {
+    const userList = orgItems.map(item =>
+      <Animated key={item.id} inline={true}>
+        <OrgCard item={item} />
+      </Animated>
+    );
 
     return <div className="user-organization-list-container">
       <div className="users">
@@ -52,7 +54,7 @@ export default React.createClass({
   getInitialState() { return {}; },
 
   render() {
-    const user = this.state.user
+    const {user} = this.state;
     const repositories = this.state.repos;
     let repos;
 
@@ -60,11 +62,11 @@ export default React.createClass({
 
     if (!repositories || this.state.reposLoading) {
       repos = <Spinner />;
-    } else if (repositories.length > 0) {
+    } else if (repositories.length) {
       repos = repositories.map(repo => <Animated key={repo.id}><RepoCard user={user} repo={repo} /></Animated>);
       repos = <ul className="user-repo-list">{repos}</ul>;
     } else {
-      repos = "No repositories.";
+      repos = 'No repositories.';
     }
 
     return <div>

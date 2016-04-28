@@ -28,7 +28,8 @@ const PostEditor = React.createClass({
       <div className="post-text">
         <textarea className="edit-post-body" ref="body" style={{height: 64}} defaultValue={text} />
         <div className="post-buttons">
-          <Button onClick={this.handleCancel}>Cancel</Button> <Button>Save post (⌘↩)</Button>
+          <Button onClick={this.handleCancel}>Cancel</Button>
+          <Button>Save post (⌘↩)</Button>
         </div>
       </div>
     </Form>;
@@ -42,7 +43,7 @@ const PostRenderer = ({ text }) => {
     gfm: true,
     sanitize: true,
     highlight: (code, language) => {
-      if (language && language in hljs.LANGUAGES) {
+      if (language && hljs.LANGUAGES && language in hljs.LANGUAGES) {
         const raw = unescapeExpression(code);
         try {
           return hljs.highlight(language, raw).value;
@@ -80,8 +81,10 @@ export default React.createClass({
 
   render() {
     const {post, inFeed, showActions, onEdit, onDelete} = this.props;
+    const {user, topic} = post;
+    const createdAt = new Date(post.created_at);
 
-    const topicAddress = post.user.login + "/" + post.topic.repo.name + "/topics/" + post.topic.number;
+    const topicAddress = user.login + "/" + topic.repo.name + "/topics/" + topic.number;
     const topicUrl = "/@" + topicAddress;
 
     let actions;
@@ -93,20 +96,17 @@ export default React.createClass({
       </div>
     }
 
-    let text;
-
-    if (!this.state.isEditing) {
-      text = <PostRenderer text={post.text} />
-    } else {
-      text = <PostEditor onCancel={this.handleEditCancel} onEdit={this.handleEditSave} text={post.text} />
-    }
+    const text = this.state.isEditing ?
+      <PostEditor onCancel={this.handleEditCancel} onEdit={this.handleEditSave} text={post.text} /> :
+      <PostRenderer text={post.text} />;
 
     const authorAddition = inFeed ?
       <span>in <Link className="post-url" to={topicUrl}>{topicAddress}</Link></span> :
       null;
 
-    const {user} = post;
-    const metadata = <span>{moment(new Date(post.created_at)).fromNow()}</span>;
+    const metadata = <time dateTime={createdAt.toISOString()}>
+      {moment(createdAt).fromNow()}
+    </time>;
 
     return <PostCardBlueprint {...{user, authorAddition, metadata}}>
       {actions}

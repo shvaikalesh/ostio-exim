@@ -22,8 +22,7 @@ const Routes = <Router history={browserHistory}>
     <Route path="/@:login" component={Profile}>
       <IndexRoute component={Repos} />
       <Route path=":repo/topics/:topic" component={Topic} />
-      <Route path=":repo" component={Repo}>
-      </Route>
+      <Route path=":repo" component={Repo} />
     </Route>
   </Route>
 </Router>;

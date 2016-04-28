@@ -20,11 +20,11 @@ export default Exim.createStore({
 
   findUser: {
     while(userLoading) {
-      this.set({userLoading});
+      this.set({ userLoading });
     },
     on(login) {
       this.set('user', null);
-      return request.get('/users/'+login);
+      return request.get('/users/' + login);
     },
     did(data) {
       this.set('user', data);
@@ -33,11 +33,11 @@ export default Exim.createStore({
 
   fetchLatest: {
     while(usersLoading) {
-      this.set({usersLoading});
+      this.set({ usersLoading });
     },
     on() {
       this.set('users', null);
-      return request.get('/users/');
+      return request.get('/users');
     },
     did(data) {
       this.set('users', data);

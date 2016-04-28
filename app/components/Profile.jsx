@@ -40,8 +40,9 @@ export default React.createClass({
 
   getInitialState() { return {}; },
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     this.setState({newTopic: false});
+    usersStore.actions.findUser(nextProps.params.login);
   },
 
   syncRepos() {

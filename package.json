@@ -1,8 +1,8 @@
 {
-  "name": "your-app",
-  "description": "Description",
-  "author": "Your Name",
-  "version": "0.0.1",
+  "name": "ostio-exim",
+  "description": "This is a React + Exim implementation of the Ostio front-end.",
+  "author": "Hell Yeah LLC",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": ""
@@ -19,7 +19,7 @@
     "normalize.css": "~3.0.0",
     "react": "~0.14.7",
     "react-dom": "~0.14.7",
-    "react-router": "~2.0.0",
+    "react-router": "~2.4.0",
     "whatwg-fetch": "~0.11.0"
   },
   "devDependencies": {
@@ -33,5 +33,6 @@
     "stylus-brunch": "~2.0.0",
     "javascript-brunch": "~2.0.0",
     "uglify-js-brunch": "~2.0.0"
-  }
+  },
+  "license": "MIT"
 }
