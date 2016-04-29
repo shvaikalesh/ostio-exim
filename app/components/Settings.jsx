@@ -7,8 +7,8 @@ export default React.createClass({
   ],
 
   handleNotifsChange(e) {
-    const checked = e.target.checked;
-    usersStore.actions.updateCurrentUser({enabled_email_notifications: checked});
+    const {checked} = e.target;
+    usersStore.actions.updateCurrentUser({ enabled_email_notifications: checked });
   },
 
   render() {
@@ -16,10 +16,9 @@ export default React.createClass({
     if (!currentUser) return <div/>;
 
     return <div>
-      <input type="checkbox" id="setting-email-notifications" onChange={this.handleNotifsChange} checked={currentUser.enabled_email_notifications} /> <label htmlFor="setting-email-notifications">Enable email notifications</label>
-      <p>
-        When checked, the setting will enable email notifications on new posts in your / your organizations repos
-      </p>
+      <input type="checkbox" id="setting-email-notifications" onChange={this.handleNotifsChange} checked={currentUser.enabled_email_notifications} />
+      <label htmlFor="setting-email-notifications">Enable email notifications</label>
+      <p>When checked, the setting will enable email notifications on new posts in your / your organizations repos.</p>
     </div>;
   }
 });

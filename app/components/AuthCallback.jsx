@@ -12,9 +12,9 @@ export default React.createClass({
 
   componentDidMount() {
     const {query} = this.props.location;
-    const {accessToken, login} = query;
+    const {access_token, login} = query;
     const {router} = this.context;
-    usersStore.actions.login(accessToken).then(() => {
+    usersStore.actions.login(access_token).then(() => {
       router.push('/@' + login);
     });
   },

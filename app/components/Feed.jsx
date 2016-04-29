@@ -31,7 +31,7 @@ const Users = React.createClass({
 
     if (!this.state.users || this.state.usersLoading) {
       users = <Spinner />;
-    } else if (this.state.users.length > 0) {
+    } else if (this.state.users.length) {
       users = this.state.users.map(user => <Animated inline={true} key={user.id}><UserCard user={user} /></Animated>);
     } else {
       users = "No users.";
@@ -66,7 +66,7 @@ const Posts = React.createClass({
 
     if (!this.state.posts || this.state.postsLoading) {
       posts = <Spinner />;
-    } else if (this.state.posts.length > 0) {
+    } else if (this.state.posts.length) {
       posts = this.state.posts.map(post => <Animated key={post.id}><PostCard post={post} inFeed={true} /></Animated>);
     } else {
       posts = "No posts.";

@@ -13,14 +13,14 @@ export default React.createClass({
 
   createPost() {
     const body = (this.refs.body.value || '').trim();
-    if (body.length === 0) return;
+    if (!body.length) return;
 
-    const {user, repo, topic, onDone} = this.props;
+    const {login, repo, topic, onDone} = this.props;
 
-    this.setState({isCreating: true});
+    this.setState({ isCreating: true });
 
-    postsStore.actions.post(user.login, repo, topic, body).then(() => {
-      this.setState({isCreating: false});
+    postsStore.actions.post(login, repo, topic, body).then(() => {
+      this.setState({ isCreating: false });
       this.refs.body.value = '';
       onDone();
     });
@@ -30,7 +30,9 @@ export default React.createClass({
     const {user} = this.props;
     const {isCreating} = this.state;
 
-    const metadata = <span>Posts are parsed with <a href="http://github.github.com/github-flavored-markdown/" target="_blank">Markdown</a></span>;
+    const metadata = <span>
+      Posts are parsed with <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax" target="_blank">Markdown</a>
+    </span>;
 
     return <Form className="post" onSubmit={this.createPost}>
       <PostCardBlueprint {...{user, metadata}}>

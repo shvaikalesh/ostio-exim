@@ -12,15 +12,15 @@ export default React.createClass({
     const title = (this.refs.title.value || '').trim();
     const body = (this.refs.body.value || '').trim();
 
-    if (title.length === 0 || body.length === 0) return;
+    if (!title.length || !body.length) return;
 
     const {user, repo, onDone} = this.props;
 
-    this.setState({isCreating: true});
+    this.setState({ isCreating: true });
 
     topicsStore.actions.create(user, repo, title, body).then(() => {
-      this.setState({isCreating: false});
-      onDone()
+      this.setState({ isCreating: false });
+      onDone();
     });
   },
 

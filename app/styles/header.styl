@@ -1,42 +1,53 @@
 @import 'nib'
 
 .header
-  max-width: 950px
-  margin: 8px auto
+  max-width: 960px
+  height: 100%
+  margin: auto
   padding: 0 20px
+  display: flex
+  align-items: center
+
+  &-nav
+    margin-left: 10px
+    margin-top: 5px
+    font-size: 20px
+    @media (max-width: 480px)
+      font-size: 15px
+    a
+      margin: 0 10px
+
   &-auth
-    float: right
-    margin-top: 2px
-    .logged-out &
-      margin-top: 7px
+    margin-left: auto
+
+  &-login-button.button
+    color: #fff
+
+  &-login-provider
+    @media (max-width: 480px)
+      display: none
+
   &-avatar
     width: 30px
-    height: 30px
+    height: @width
+    margin-right: 10px
+    @media (max-width: 360px)
+      display: none
+
+  &-login
+    @media (max-width: 480px)
+      display: none
+
   &-logo
-    float: left
     font-family: 'OpenSansLight', 'Helvetica Neue', Helvetica, Arial, sans-serif
-    font-weight: normal
     font-size: 40px
     line-height: 36px
-  &-links
-    float: left
-    margin-left: 10px
-    margin-top: 7px
-  &-link
-    float: left
-    padding: 0 10px
-    @media all and (max-width: 380px)
-      position: absolute
-      top: 65px
-      left: 10px
+    margin: 0
+    @media (max-width: 480px)
+      font-size: 30px
 
   &-container
-    z-index: 100
-    left: 0
-    top: 0px
     height: 60px
-    width: 100%
-    position: absolute
     background: url('../images/nav-bg.gif') #353535
     border-bottom: 4px solid #434343
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25)

@@ -17,11 +17,16 @@ const getAccessData = () => {
 };
 
 const addDataToPath = (path, data) => {
-  if (Object.keys(data).length > 0) {
+  if (Object.keys(data).length) {
     const st = path.indexOf('?') === 0 ? '&' : '?'
     return path + st + serialize(data);
   }
   return path;
+};
+
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
 };
 
 const request = {
@@ -34,33 +39,21 @@ const request = {
   post(path, body) {
     path = addDataToPath(path, getAccessData());
 
-    if (body) {
-      const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-      return fetch(api.root + api.base + path, {method: 'post', body: JSON.stringify(body), headers}).then(r => r.json());
-    } else {
-      return fetch(api.root + api.base + path, {method: 'post'});
-    }
+    return body
+      ? fetch(api.root + api.base + path, {method: 'POST', body: JSON.stringify(body), headers}).then(r => r.json())
+      : fetch(api.root + api.base + path, {method: 'POST'});
   },
   put(path, body) {
     path = addDataToPath(path, getAccessData());
 
-    if (body) {
-      const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-      return fetch(api.root + api.base + path, {method: 'put', body: JSON.stringify(body), headers});
-    } else {
-      return fetch(api.root + api.base + path, {method: 'put'});
-    }
+    return body
+      ? fetch(api.root + api.base + path, {method: 'PUT', body: JSON.stringify(body), headers})
+      : fetch(api.root + api.base + path, {method: 'PUT'});
   },
   delete(path, body) {
     path = addDataToPath(path, getAccessData());
 
-    return fetch(api.root + api.base + path, {method: 'delete'});
+    return fetch(api.root + api.base + path, {method: 'DELETE'});
   }
 };
 
